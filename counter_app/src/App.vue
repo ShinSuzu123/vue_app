@@ -15,14 +15,14 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 // countの初期値
-const count = ref(0)
+const count = ref<number>(0) // number型のリアクティブ変数であることの明示
 
 // クリアボタンを押したときにリセットがされる関数
-const clear = () => {
+const clear = (): void => { // voidでなにもか返さないことの保証をする
   count.value = 0;
 }
 
