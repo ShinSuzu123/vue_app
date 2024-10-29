@@ -1,47 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
+
+// countの初期値
+const count = ref(0)
+
+// クリアボタンを押したときにリセットがされる関数
+const clear = () => {
+  count.value = 0;
+}
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <h1>カンターアプリ</h1>
+    <!-- プラスとマイナスボタン -->
+    <div class="button">
+        <button @click="count++">+</button>
+        <button @click="count--">-</button>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <!-- クリアボタン -->
+    <div>
+        <button @click="clear">クリア</button>
+    </div>
+    <!-- カウンター表示 -->
+    <div>
+        <p>カウンター表示: {{ count }}</p>
+    </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+.button {
+
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
